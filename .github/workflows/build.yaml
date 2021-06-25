@@ -47,6 +47,8 @@ jobs:
           toTag: ${{ env.RELEASE_TAG }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Echo release
+        run: echo "CHANGELOG ${{steps.build_changelog.outputs.changelog}}"
 
 #      - name: Create Release
 #        id: create_release
