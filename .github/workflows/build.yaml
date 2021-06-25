@@ -45,7 +45,7 @@ jobs:
         # (Escape newlines see https://github.com/actions/create-release/issues/25)
         run: |
           text="$(git --no-pager log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s")"
-          echo '::set-output name=CHANGELOG::$text'
+          echo '::set-output name=CHANGELOG::${{text}}'
       - name: echo CHANGELOG
         run: echo "CHANGELOG is ${{ steps.changelog.outputs.CHANGELOG }}"
 #      - name: Create Release
