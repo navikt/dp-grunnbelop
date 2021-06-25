@@ -46,18 +46,16 @@ jobs:
         run: |
           text="$(git --no-pager log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s")"
           echo "::set-output name=CHANGELOG::$text"
-      - name: echo CHANGELOG
-        run: echo "CHANGELOG is ${{ steps.changelog.outputs.CHANGELOG }}"
-#      - name: Create Release
-#        id: create_release
-#        uses: actions/create-release@latest
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          tag_name: ${{ env.RELEASE_TAG }}
-#          release_name: ${{ env.RELEASE_TAG }}
-#          body: |
-#            Changes in this Release
-#            ${{ env.CHANGELOG }}
-#          draft: false
-#          prerelease: false
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          release_name: ${{ env.RELEASE_TAG }}
+          body: |
+            Changes in this Release
+            ${{ steps.changelog.outputs.CHANGELOG }}"
+          draft: false
+          prerelease: false
