@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
-      - name: Set up Java 12
+      - name: Set up Java
         uses: actions/setup-java@v1
         with:
           java-version: '14.x'
@@ -32,7 +32,7 @@ jobs:
     name: Create Release
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' && !contains(github.event.head_commit.message, 'ci skip')
+    if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'ci skip')
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
