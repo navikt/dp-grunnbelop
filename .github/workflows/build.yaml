@@ -41,12 +41,12 @@ jobs:
           export TAG_NAME="$(TZ="Europe/Oslo" date +%Y.%m.%d-%H.%M).$(echo $GITHUB_SHA | cut -c 1-12)"
           echo "RELEASE_TAG=$TAG_NAME" >> $GITHUB_ENV
       - name: Build Changelog
-          id: github_release
-          uses: mikepenz/release-changelog-builder-action@v1
-          with:
-            toTag: ${{ env.RELEASE_TAG }}
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: github_release
+        uses: mikepenz/release-changelog-builder-action@v1
+        with:
+          toTag: ${{ env.RELEASE_TAG }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 #      - name: Create Release
 #        id: create_release
