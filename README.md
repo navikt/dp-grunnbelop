@@ -49,10 +49,10 @@ Datoene over må ikke forveksles med `iverksattFom` som gjenspeiler når ny G sk
    1. [Eksempel pull-request fra 2022](https://github.com/navikt/dp-grunnbelop/pull/1/files)
 
 5. Oppdaterer repoene (i skrivende stund): 
-   1. dp-regel-minsteinntekt ($4-4)
-   2. dp-regel-periode ($4-15)
-   3. dp-regel-grunnlag ($4-11)
-   4. dp-regel-sats ($4-12)
+   1. dp-regel-minsteinntekt (§ 4-4)
+   2. dp-regel-periode (§ 4-15)
+   3. dp-regel-grunnlag (§ 4-11)
+   4. dp-regel-sats (§ 4-12)
    5. dp-oppslag-inntekt (Brukes av dp-quiz for å hente Grunnbeløp)
 
 Praksis er at vi oppretter pull-request i disse repoene og merger før G-justeringsdato. De kan deployes uavhengig av Arene. `iverksattFom` vil styre iverksettingen. 
