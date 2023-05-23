@@ -18,13 +18,51 @@ import java.time.YearMonth
 class GrunnbelopTest {
 
     @Test
+    fun ` Skal returnere grunnbeløp for 2023 etter iverkssatt FOM dato `() {
+        getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
+            dato = YearMonth.of(
+                2023,
+                Month.MAY,
+            ),
+            gjeldendeDato = LocalDate.of(2023, 5, 27),
+        ).verdi shouldBe 118620.toBigDecimal()
+
+        getGrunnbeløpForRegel(Regel.Minsteinntekt).forMåned(
+            dato = YearMonth.of(
+                2023,
+                Month.JUNE,
+            ),
+            gjeldendeDato = LocalDate.of(2023, 5, 29),
+        ).verdi shouldBe 118620.toBigDecimal()
+    }
+
+    @Test
+    fun ` Skal returnere grunnbeløp for 2022 dersom gjeldendedato er før iverksatt dato for 2023 G`() {
+        getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
+            dato = YearMonth.of(
+                2023,
+                Month.MAY,
+            ),
+            gjeldendeDato = LocalDate.of(2022, 5, 27),
+        ).verdi shouldBe 111477.toBigDecimal()
+
+        getGrunnbeløpForRegel(Regel.Minsteinntekt).forMåned(
+            dato = YearMonth.of(
+                2023,
+                Month.MAY,
+            ),
+            gjeldendeDato = LocalDate.of(2023, 5, 28),
+        ).verdi shouldBe 111477.toBigDecimal()
+    }
+
+    @Test
     fun ` Skal returnere grunnbeløp for 2022 etter iverkssatt FOM dato `() {
         getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
             dato = YearMonth.of(
                 2022,
-                Month.MAY
+                Month.MAY,
             ),
-            gjeldendeDato = LocalDate.of(2022, 5, 21)
+            gjeldendeDato = LocalDate.of(2022, 5, 21),
         ).verdi shouldBe 111477.toBigDecimal()
     }
 
@@ -33,19 +71,20 @@ class GrunnbelopTest {
         getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
             dato = YearMonth.of(
                 2022,
-                Month.MAY
+                Month.MAY,
             ),
-            gjeldendeDato = LocalDate.of(2022, 5, 20)
+            gjeldendeDato = LocalDate.of(2022, 5, 20),
         ).verdi shouldBe 106399.toBigDecimal()
     }
+
     @Test
     fun ` Skal returnere grunnbeløp 2021 etter iverkssatt FOM dato `() {
         getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
             dato = YearMonth.of(
                 2021,
-                Month.MAY
+                Month.MAY,
             ),
-            gjeldendeDato = LocalDate.of(2021, 5, 24)
+            gjeldendeDato = LocalDate.of(2021, 5, 24),
         ).verdi shouldBe 106399.toBigDecimal()
     }
 
@@ -54,9 +93,9 @@ class GrunnbelopTest {
         getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
             dato = YearMonth.of(
                 2021,
-                Month.MAY
+                Month.MAY,
             ),
-            gjeldendeDato = LocalDate.of(2021, 5, 22)
+            gjeldendeDato = LocalDate.of(2021, 5, 22),
         ).verdi shouldBe 101351.toBigDecimal()
     }
 
@@ -65,9 +104,9 @@ class GrunnbelopTest {
         getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
             dato = YearMonth.of(
                 2020,
-                Month.MAY
+                Month.MAY,
             ),
-            gjeldendeDato = LocalDate.of(2020, 9, 21)
+            gjeldendeDato = LocalDate.of(2020, 9, 21),
         ).verdi shouldBe 101351.toBigDecimal()
     }
 
@@ -76,8 +115,8 @@ class GrunnbelopTest {
         getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
             YearMonth.of(
                 2020,
-                Month.APRIL
-            )
+                Month.APRIL,
+            ),
         ).verdi shouldBe 99858.toBigDecimal()
     }
 
@@ -86,8 +125,8 @@ class GrunnbelopTest {
         getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
             YearMonth.of(
                 2019,
-                Month.MAY
-            )
+                Month.MAY,
+            ),
         ).verdi shouldBe 99858.toBigDecimal()
     }
 
@@ -96,8 +135,8 @@ class GrunnbelopTest {
         getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
             YearMonth.of(
                 2019,
-                Month.APRIL
-            )
+                Month.APRIL,
+            ),
         ).verdi shouldBe 96883.toBigDecimal()
     }
 
@@ -106,8 +145,8 @@ class GrunnbelopTest {
         getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
             YearMonth.of(
                 2018,
-                Month.MARCH
-            )
+                Month.MARCH,
+            ),
         ).verdi shouldBe 93634.toBigDecimal()
     }
 
@@ -116,8 +155,8 @@ class GrunnbelopTest {
         getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
             YearMonth.of(
                 2016,
-                Month.MAY
-            )
+                Month.MAY,
+            ),
         ).verdi shouldBe 92576.toBigDecimal()
     }
 
@@ -126,8 +165,8 @@ class GrunnbelopTest {
         getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
             YearMonth.of(
                 2015,
-                Month.AUGUST
-            )
+                Month.AUGUST,
+            ),
         ).verdi shouldBe 90068.toBigDecimal()
     }
 
@@ -137,8 +176,8 @@ class GrunnbelopTest {
             LocalDate.of(
                 2015,
                 8,
-                6
-            )
+                6,
+            ),
         ).verdi shouldBe 90068.toBigDecimal()
     }
 
@@ -148,8 +187,8 @@ class GrunnbelopTest {
             LocalDate.of(
                 2019,
                 5,
-                1
-            )
+                1,
+            ),
         ).verdi shouldBe 99858.toBigDecimal()
     }
 
@@ -169,16 +208,16 @@ class GrunnbelopTest {
     fun `Er det ikke definert noe gyldighetsperiode som varer lenge nok, skal den nyeste brukes`() {
         forAll(
             row(Regel.Minsteinntekt),
-            row(Regel.Grunnlag)
+            row(Regel.Grunnlag),
         ) { regel ->
             val grunnbeløpForRegel = getGrunnbeløpForRegel(regel)
             grunnbeløpForRegel.forDato(
                 LocalDate.of(
                     2099,
                     8,
-                    6
+                    6,
                 ),
-                gjeldendeDato = LocalDate.of(2099, 9, 21)
+                gjeldendeDato = LocalDate.of(2099, 9, 21),
             ).verdi shouldBe grunnbeløpForRegel.first().grunnbeløp.verdi
         }
     }
@@ -190,8 +229,8 @@ class GrunnbelopTest {
                 LocalDate.of(
                     1099,
                     8,
-                    6
-                )
+                    6,
+                ),
             )
         }
     }
@@ -207,14 +246,14 @@ class GrunnbelopTest {
                 regel = Regel.Grunnlag,
                 fom = gjustering.minusDays(20),
                 iverksattFom = gjustering,
-                grunnbeløp = Grunnbeløp.FastsattI2016
+                grunnbeløp = Grunnbeløp.FastsattI2016,
             ),
             GrunnbeløpPolicy(
                 regel = Regel.Grunnlag,
                 fom = LocalDate.of(2015, 5, 1),
                 iverksattFom = LocalDate.of(2015, 5, 1),
-                grunnbeløp = Grunnbeløp.FastsattI2015
-            )
+                grunnbeløp = Grunnbeløp.FastsattI2015,
+            ),
         )
 
         mappingsMedFramtidigGjustering.forDato(beregningIFramtidenFørPlanlagtGjustering) shouldBe Grunnbeløp.FastsattI2015
@@ -231,22 +270,22 @@ class GrunnbelopTest {
                 regel = Regel.Grunnlag,
                 fom = gjusteringsDato.minusDays(20),
                 iverksattFom = gjusteringsDato,
-                grunnbeløp = Grunnbeløp.FastsattI2016
-            )
+                grunnbeløp = Grunnbeløp.FastsattI2016,
+            ),
         )
         val mappingsForMinsteinntekt = setOf(
             GrunnbeløpPolicy(
                 regel = Regel.Minsteinntekt,
                 fom = gjusteringsDato,
                 iverksattFom = gjusteringsDato,
-                grunnbeløp = Grunnbeløp.FastsattI2016
+                grunnbeløp = Grunnbeløp.FastsattI2016,
             ),
             GrunnbeløpPolicy(
                 regel = Regel.Minsteinntekt,
                 fom = gjusteringsDato.minusYears(1),
                 iverksattFom = gjusteringsDato.minusYears(1),
-                grunnbeløp = Grunnbeløp.FastsattI2015
-            )
+                grunnbeløp = Grunnbeløp.FastsattI2015,
+            ),
         )
 
         val grunnbeløpForGrunnlag = mappingsForGrunnlag.forDato(tilbakedatertBeregningsdatoEtterGjustering)
@@ -277,8 +316,8 @@ class GrunnbelopTest {
         }
     }
 
-    @Test
     // This test is a bit awkward, but it's a nice way to blackbox verify that all mappings exists
+    @Test
     fun `Alle kombinasjoner av år og regler har en mapping`() {
         val iverksatteGrunnbeløp = Grunnbeløp.values().filter { it.iverksattFom.isBefore(LocalDate.now()) }
 
