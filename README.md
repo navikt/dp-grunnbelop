@@ -39,7 +39,7 @@ Grunnbeløp.FastsattI2022 to mapOf(
     )
 ```
 - `Regel.Grunnlag` definerer når ny G skal gjelde fra for grunnlag (§4-11) og sats (§4-12). Den vil være fra justeringsdato 1. mai
-- `Regel.Minsteinntekt` definerer når ny G skal gjelde for krav til minste arbeidsinntekt (§4-4) og dagpengeperiode (§ 4-15). (Praksisk i nav at denne datoen vil være mandag etter gjusteringsdato)
+- `Regel.Minsteinntekt` definerer når ny G skal gjelde for krav til minste arbeidsinntekt (§4-4) og dagpengeperiode (§ 4-15). Også kalt hengende-G. Fra-og-med (fom) gjelder dermed fra første mandag etter at grunnbeløpet er fastsatt i stortinget, slik at nye dagpengesaker behandles med samme, gammel sats når de innvilges tilbake i tid (fra 1. mai og frem til dato for hengende G)
 
 Datoene over må ikke forveksles med `iverksattFom` som gjenspeiler når ny G skal _iverksettes_. 
 
@@ -56,3 +56,5 @@ Datoene over må ikke forveksles med `iverksattFom` som gjenspeiler når ny G sk
    5. dp-oppslag-inntekt (Brukes av dp-quiz for å hente Grunnbeløp)
 
 Praksis er at vi oppretter pull-request i disse repoene og merger før G-justeringsdato. De kan deployes uavhengig av Arene. `iverksattFom` vil styre iverksettingen. 
+
+Se rutine i Arena https://confluence.adeo.no/display/TEAMARENA/Rutine+for+G-regulering+i+Arena 
