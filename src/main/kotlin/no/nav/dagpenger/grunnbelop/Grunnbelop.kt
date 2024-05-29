@@ -8,6 +8,7 @@ import java.time.YearMonth
 
 enum class Grunnbeløp(val verdi: BigDecimal, val iverksattFom: LocalDate) {
     GjusteringsTest(verdi = 124028.toBigDecimal(), iverksattFom = LocalDate.now().plusYears(10)),
+    FastsattI2024(verdi = 124028.toBigDecimal(), iverksattFom = LocalDate.of(2024, Month.JUNE, 3)),
     FastsattI2023(verdi = 118620.toBigDecimal(), iverksattFom = LocalDate.of(2023, Month.MAY, 27)),
     FastsattI2022(verdi = 111477.toBigDecimal(), iverksattFom = LocalDate.of(2022, Month.MAY, 21)),
     FastsattI2021(verdi = 106399.toBigDecimal(), iverksattFom = LocalDate.of(2021, Month.MAY, 23)),
@@ -46,6 +47,15 @@ enum class Regel {
 }
 
 internal val gyldighetsperioder = mapOf(
+
+    Grunnbeløp.FastsattI2024 to mapOf(
+        Regel.Grunnlag to Gyldighetsperiode(
+            fom = LocalDate.of(2024, Month.MAY, 1),
+        ),
+        Regel.Minsteinntekt to Gyldighetsperiode(
+            fom = LocalDate.of(2024, Month.JUNE, 3),
+        ),
+    ),
 
     Grunnbeløp.FastsattI2023 to mapOf(
         Regel.Grunnlag to Gyldighetsperiode(

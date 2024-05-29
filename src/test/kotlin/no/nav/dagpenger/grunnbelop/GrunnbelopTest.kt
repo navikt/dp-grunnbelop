@@ -18,6 +18,25 @@ import java.time.YearMonth
 class GrunnbelopTest {
 
     @Test
+    fun ` Skal returnere grunnbeløp for 2024 etter iverkssatt FOM dato `() {
+        getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
+            dato = YearMonth.of(
+                2024,
+                Month.MAY,
+            ),
+            gjeldendeDato = LocalDate.of(2024, 6, 3),
+        ).verdi shouldBe 124028.toBigDecimal()
+
+        getGrunnbeløpForRegel(Regel.Minsteinntekt).forMåned(
+            dato = YearMonth.of(
+                2024,
+                Month.JUNE,
+            ),
+            gjeldendeDato = LocalDate.of(2024, 6, 3),
+        ).verdi shouldBe 124028.toBigDecimal()
+    }
+
+    @Test
     fun ` Skal returnere grunnbeløp for 2023 etter iverkssatt FOM dato `() {
         getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
             dato = YearMonth.of(
