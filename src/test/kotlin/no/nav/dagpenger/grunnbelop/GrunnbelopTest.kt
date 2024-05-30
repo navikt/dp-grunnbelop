@@ -32,7 +32,7 @@ class GrunnbelopTest {
                 2024,
                 Month.MAY,
             ),
-            gjeldendeDato = LocalDate.of(2024, 6, 3),
+            gjeldendeDato = LocalDate.of(2024, 6, 1),
         ).verdi shouldBe Grunnbeløp.FastsattI2024.verdi
 
         getGrunnbeløpForRegel(Regel.Minsteinntekt).forMåned(
@@ -40,7 +40,7 @@ class GrunnbelopTest {
                 2024,
                 Month.JUNE,
             ),
-            gjeldendeDato = LocalDate.of(2024, 6, 3),
+            gjeldendeDato = LocalDate.of(2024, 6, 1),
         ).verdi shouldBe Grunnbeløp.FastsattI2024.verdi
     }
 
