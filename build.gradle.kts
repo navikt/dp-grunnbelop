@@ -29,6 +29,8 @@ dependencies {
     testImplementation(Junit5.params)
     testImplementation(KoTest.assertions)
     testImplementation(KoTest.runner)
+    testImplementation("com.approvaltests:approvaltests:22.3.3")
+
     testRuntimeOnly(Junit5.engine)
 }
 
