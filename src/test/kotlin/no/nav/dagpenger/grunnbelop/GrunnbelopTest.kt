@@ -24,8 +24,16 @@ class GrunnbelopTest {
                 2024,
                 Month.MAY,
             ),
+            gjeldendeDato = LocalDate.of(2024, 5, 3),
+        ).verdi shouldBe Grunnbeløp.FastsattI2023.verdi
+
+        getGrunnbeløpForRegel(Regel.Grunnlag).forMåned(
+            dato = YearMonth.of(
+                2024,
+                Month.MAY,
+            ),
             gjeldendeDato = LocalDate.of(2024, 6, 3),
-        ).verdi shouldBe 124028.toBigDecimal()
+        ).verdi shouldBe Grunnbeløp.FastsattI2024.verdi
 
         getGrunnbeløpForRegel(Regel.Minsteinntekt).forMåned(
             dato = YearMonth.of(
@@ -33,7 +41,7 @@ class GrunnbelopTest {
                 Month.JUNE,
             ),
             gjeldendeDato = LocalDate.of(2024, 6, 3),
-        ).verdi shouldBe 124028.toBigDecimal()
+        ).verdi shouldBe Grunnbeløp.FastsattI2024.verdi
     }
 
     @Test
