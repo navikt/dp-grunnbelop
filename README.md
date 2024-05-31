@@ -59,8 +59,8 @@ Grunnbeløp.FastsattI2022 to mapOf(
 
 Datoene over må ikke forveksles med `iverksattFom` som gjenspeiler når ny G skal _iverksettes_.
 
-3. Lag tester for å teste grensedatoene
-   i [GrunnbelopTest](src/test/kotlin/no/nav/dagpenger/grunnbelop/GrunnbelopTest.kt)
+3. Lag nytt scenario for å teste grensedatoene
+   i [Grunnbeløp.feature](resources/no/nav/dagpenger/grunnbelop/features/Grunnbeløp.feature)
 
 4. Lag en commit og push endringene til Github. Vent på bygg og at ny versjon av Grunnbeløp
    lanseres (https://github.com/navikt/dp-grunnbelop/releases)

@@ -21,6 +21,8 @@ repositories {
     maven("https://jitpack.io")
 }
 
+val cucumberVersion = "7.15.0"
+
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation(kotlin("stdlib-jdk8"))
@@ -30,6 +32,11 @@ dependencies {
     testImplementation(KoTest.assertions)
     testImplementation(KoTest.runner)
     testImplementation("com.approvaltests:approvaltests:22.3.3")
+
+    testImplementation("org.junit.platform:junit-platform-suite:1.10.2")
+    testImplementation("io.cucumber:cucumber-java:$cucumberVersion")
+    testImplementation("io.cucumber:cucumber-java8:$cucumberVersion")
+    testImplementation("io.cucumber:cucumber-junit-platform-engine:$cucumberVersion")
 
     testRuntimeOnly(Junit5.engine)
 }
