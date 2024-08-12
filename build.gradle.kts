@@ -95,7 +95,7 @@ publishing {
         }
     }
     publications {
-        create<MavenPublication>("GitHub Packages") {
+        create<MavenPublication>("github") {
             from(components["java"])
             artifact(sourcesJar.get())
 
