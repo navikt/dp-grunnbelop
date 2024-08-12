@@ -18,4 +18,4 @@ jobs:
 
       - uses: gradle/gradle-build-action@v3
         with:
-          arguments: --configuration-cache test
+          arguments: test
