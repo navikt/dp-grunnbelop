@@ -84,7 +84,19 @@ spotless {
     }
 }
 
+val githubUser: String? by project
+val githubPassword: String? by project
+
 publishing {
+    repositories {
+        maven {
+            url = uri("https://maven.pkg.github.com/navikt/dp-inntekt")
+            credentials {
+                username = githubUser
+                password = githubPassword
+            }
+        }
+    }
     publications {
         create<MavenPublication>("maven") {
             from(components["java"])
@@ -93,7 +105,7 @@ publishing {
             pom {
                 description.set(artifactDescription)
                 name.set(project.name)
-                url.set(repoUrl)
+                url.set("https://github.com/navikt/dp-grunnbelop")
                 withXml {
                     asNode().appendNode("packaging", "jar")
                 }
@@ -111,9 +123,9 @@ publishing {
                 }
 
                 scm {
-                    connection.set(scmUrl)
-                    developerConnection.set(scmUrl)
-                    url.set(repoUrl)
+                    connection.set("scm:git:https://github.com/navikt/dp-biblioteker.git")
+                    developerConnection.set("scm:git:https://github.com/navikt/dp-biblioteker.git")
+                    url.set("https://github.com/navikt/dp-biblioteker")
                 }
             }
         }
