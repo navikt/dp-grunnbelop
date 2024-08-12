@@ -87,7 +87,7 @@ val githubPassword: String? by project
 publishing {
     repositories {
         maven {
-            url = uri("https://maven.pkg.github.com/navikt/dp-inntekt")
+            url = uri("https://maven.pkg.github.com/navikt/dp-grunnbelop")
             credentials {
                 username = githubUser
                 password = githubPassword
@@ -95,7 +95,7 @@ publishing {
         }
     }
     publications {
-        create<MavenPublication>("maven") {
+        create<MavenPublication>("GitHub Packages") {
             from(components["java"])
             artifact(sourcesJar.get())
 
