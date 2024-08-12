@@ -2,12 +2,9 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-group = "com.github.navikt"
-version = "1.0-SNAPSHOT"
+group = "no.nav.dagpenger"
 
 val artifactDescription = "Libraries for Dagpenger"
-val repoUrl = "https://github.com/navikt/dp-biblioteker.git"
-val scmUrl = "scm:git:https://github.com/navikt/dp-biblioteker.git"
 
 plugins {
     kotlin("jvm") version Kotlin.version
