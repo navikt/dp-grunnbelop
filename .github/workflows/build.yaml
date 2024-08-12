@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: gradle/actions/setup-gradle@v3
+      - uses: gradle/actions/setup-gradle@v4
       - run: ./gradlew build
 
   release:
@@ -53,7 +53,7 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
-      - uses: gradle/actions/setup-gradle@v3
+      - uses: gradle/actions/setup-gradle@v4
       - name: publish
         run: ./gradlew -Pversion="$(echo ${{ needs.release.outputs.tag }})" :publish
         env:
