@@ -123,9 +123,9 @@ publishing {
                 }
 
                 scm {
-                    connection.set("scm:git:https://github.com/navikt/dp-biblioteker.git")
-                    developerConnection.set("scm:git:https://github.com/navikt/dp-biblioteker.git")
-                    url.set("https://github.com/navikt/dp-biblioteker")
+                    connection.set("scm:git:https://github.com/navikt/dp-grunnbelop.git")
+                    developerConnection.set("scm:git:https://github.com/navikt/dp-grunnbelop.git")
+                    url.set("https://github.com/navikt/dp-grunnbelop")
                 }
             }
         }
