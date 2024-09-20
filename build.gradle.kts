@@ -18,7 +18,7 @@ repositories {
     maven("https://jitpack.io")
 }
 
-val cucumberVersion = "7.18.1"
+val cucumberVersion = "7.19.0"
 
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
