@@ -71,6 +71,7 @@ Datoene over må ikke forveksles med `iverksattFom` som gjenspeiler når ny G sk
     2. dp-regel-periode (§ 4-15)
     3. dp-regel-grunnlag (§ 4-11)
     4. dp-regel-sats (§ 4-12)
+    5. dp-behandling (Ny vedtaksløsning - Regelmotor for "dp-sak")
 
 Praksis er at vi oppretter pull-request i disse repoene og merger før G-justeringsdato. De kan deployes uavhengig av
 Arene. `iverksattFom` vil styre iverksettingen.
