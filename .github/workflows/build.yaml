@@ -7,7 +7,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: gradle/actions/setup-gradle@v4
       - run: ./gradlew build
 
@@ -19,7 +19,7 @@ jobs:
       contents: write
     if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'ci skip')
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set release tag
         run: |
           export TAG_NAME="$(TZ="Europe/Oslo" date +%Y%m%d).$(echo $GITHUB_RUN_NUMBER).$(echo $GITHUB_SHA | cut -c 1-6)"
@@ -52,7 +52,7 @@ jobs:
     permissions:
       packages: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: gradle/actions/setup-gradle@v4
       - name: publish
         run: ./gradlew -Pversion="$(echo ${{ needs.release.outputs.tag }})" :publish
