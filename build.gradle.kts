@@ -30,7 +30,7 @@ dependencies {
     testImplementation(KoTest.runner)
     testImplementation("com.approvaltests:approvaltests:26.1.0")
 
-    testImplementation("org.junit.platform:junit-platform-suite:1.12.2")
+    testImplementation("org.junit.platform:junit-platform-suite:6.0.1")
     testImplementation("io.cucumber:cucumber-java:$cucumberVersion")
     testImplementation("io.cucumber:cucumber-java8:$cucumberVersion")
     testImplementation("io.cucumber:cucumber-junit-platform-engine:$cucumberVersion")
