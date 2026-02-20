@@ -28,7 +28,7 @@ dependencies {
     testImplementation(Junit5.params)
     testImplementation(KoTest.assertions)
     testImplementation(KoTest.runner)
-    testImplementation("com.approvaltests:approvaltests:26.7.1")
+    testImplementation("com.approvaltests:approvaltests:27.0.0")
 
     testImplementation("org.junit.platform:junit-platform-suite:1.12.2")
     testImplementation("io.cucumber:cucumber-java:$cucumberVersion")
