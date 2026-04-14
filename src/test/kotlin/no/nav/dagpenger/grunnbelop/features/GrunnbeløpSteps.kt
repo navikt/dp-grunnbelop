@@ -16,7 +16,7 @@ import java.time.Month
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-class GrunnbeløpSteps() : No {
+class GrunnbeløpSteps : No {
     private var grunnbeløp: Grunnbeløp? = null
     private var år: Int? = null
     private var verdi: BigDecimal? = null

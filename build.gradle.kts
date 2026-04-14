@@ -1,14 +1,9 @@
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat
-import org.gradle.api.tasks.testing.logging.TestLogEvent
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 group = "no.nav.dagpenger"
 
 val artifactDescription = "Libraries for Dagpenger"
 
 plugins {
-    kotlin("jvm") version Kotlin.version
-    id(Spotless.spotless) version Spotless.version
+    id("common")
     `java-library`
     `maven-publish`
 }
@@ -24,42 +19,17 @@ dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation(kotlin("stdlib-jdk8"))
 
-    testImplementation(Junit5.api)
-    testImplementation(Junit5.params)
-    testImplementation(KoTest.assertions)
-    testImplementation(KoTest.runner)
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.12.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.12.2")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:5.9.1")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:5.9.1")
     testImplementation("com.approvaltests:approvaltests:26.7.1")
-
     testImplementation("org.junit.platform:junit-platform-suite:1.12.2")
     testImplementation("io.cucumber:cucumber-java:$cucumberVersion")
     testImplementation("io.cucumber:cucumber-java8:$cucumberVersion")
     testImplementation("io.cucumber:cucumber-junit-platform-engine:$cucumberVersion")
 
-    testRuntimeOnly(Junit5.engine)
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
-
-tasks.named<KotlinCompile>("compileKotlin") {
-    kotlinOptions.jvmTarget = "1.8"
-}
-
-tasks.named<KotlinCompile>("compileTestKotlin") {
-    kotlinOptions.jvmTarget = "1.8"
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
-    testLogging {
-        showExceptions = true
-        showStackTraces = true
-        exceptionFormat = TestExceptionFormat.FULL
-        events = setOf(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
-        showStandardStreams = true
-    }
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.12.2")
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
@@ -69,16 +39,6 @@ val sourcesJar by tasks.registering(Jar::class) {
 
 artifacts {
     add("archives", sourcesJar)
-}
-
-spotless {
-    kotlin {
-        ktlint(Ktlint.version)
-    }
-    kotlinGradle {
-        target("*.gradle.kts", "buildSrc/**/*.kt*")
-        ktlint(Ktlint.version)
-    }
 }
 
 val githubUser: String? by project

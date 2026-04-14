@@ -35,14 +35,15 @@ class GrunnbelopTest {
             row(Grunnlag),
         ) { regel ->
             val grunnbeløpForRegel = getGrunnbeløpForRegel(regel)
-            grunnbeløpForRegel.forDato(
-                LocalDate.of(
-                    2099,
-                    8,
-                    6,
-                ),
-                gjeldendeDato = LocalDate.of(2099, 9, 21),
-            ).verdi shouldBe grunnbeløpForRegel.first().grunnbeløp.verdi
+            grunnbeløpForRegel
+                .forDato(
+                    LocalDate.of(
+                        2099,
+                        8,
+                        6,
+                    ),
+                    gjeldendeDato = LocalDate.of(2099, 9, 21),
+                ).verdi shouldBe grunnbeløpForRegel.first().grunnbeløp.verdi
         }
     }
 

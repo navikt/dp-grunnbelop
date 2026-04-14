@@ -6,7 +6,10 @@ import java.time.LocalDate
 import java.time.Month
 import java.time.YearMonth
 
-enum class Grunnbeløp(val verdi: BigDecimal, val iverksattFom: LocalDate) {
+enum class Grunnbeløp(
+    val verdi: BigDecimal,
+    val iverksattFom: LocalDate,
+) {
     GjusteringsTest(verdi = 130160.toBigDecimal(), iverksattFom = LocalDate.now().plusYears(10)),
     FastsattI2025(verdi = 130160.toBigDecimal(), iverksattFom = LocalDate.of(2025, Month.MAY, 31)),
     FastsattI2024(verdi = 124028.toBigDecimal(), iverksattFom = LocalDate.of(2024, Month.JUNE, 1)),
@@ -36,9 +39,7 @@ enum class Grunnbeløp(val verdi: BigDecimal, val iverksattFom: LocalDate) {
     FastsattI2000(verdi = 49090.toBigDecimal(), iverksattFom = LocalDate.of(2000, Month.APRIL, 30)),
 }
 
-fun Grunnbeløp.faktorMellom(grunnbeløp: Grunnbeløp): BigDecimal {
-    return this.verdi.divide(grunnbeløp.verdi, antallDesimaler, RoundingMode.HALF_UP)
-}
+fun Grunnbeløp.faktorMellom(grunnbeløp: Grunnbeløp): BigDecimal = this.verdi.divide(grunnbeløp.verdi, antallDesimaler, RoundingMode.HALF_UP)
 
 internal const val antallDesimaler: Int = 20
 
@@ -338,50 +339,45 @@ internal val gyldighetsperioder =
     )
 
 private val grunnbeløp =
-    gyldighetsperioder.flatMap { (grunnbeløp, mappings) ->
-        mappings.map { (regel, mapping) ->
-            GrunnbeløpPolicy(
-                fom = mapping.fom,
-                grunnbeløp = grunnbeløp,
-                regel = regel,
-                iverksattFom = grunnbeløp.iverksattFom,
-            )
-        }
-    }.toSet().sortedByDescending { it.fom }
+    gyldighetsperioder
+        .flatMap { (grunnbeløp, mappings) ->
+            mappings.map { (regel, mapping) ->
+                GrunnbeløpPolicy(
+                    fom = mapping.fom,
+                    grunnbeløp = grunnbeløp,
+                    regel = regel,
+                    iverksattFom = grunnbeløp.iverksattFom,
+                )
+            }
+        }.toSet()
+        .sortedByDescending { it.fom }
 
-fun getGrunnbeløpForRegel(regel: Regel): Set<GrunnbeløpPolicy> {
-    return grunnbeløp.filter { it.gjelderFor(regel) }.toSet()
-}
+fun getGrunnbeløpForRegel(regel: Regel): Set<GrunnbeløpPolicy> = grunnbeløp.filter { it.gjelderFor(regel) }.toSet()
 
 fun Set<GrunnbeløpPolicy>.forDato(
     dato: LocalDate,
     gjeldendeDato: LocalDate = LocalDate.now(),
-): Grunnbeløp {
-    return utenFramtidigeGrunnbeløp(gjeldendeDato)
+): Grunnbeløp =
+    utenFramtidigeGrunnbeløp(gjeldendeDato)
         .first { it.gjelderFor(dato) }
         .grunnbeløp
-}
 
 fun Set<GrunnbeløpPolicy>.forMåned(
     dato: YearMonth,
     gjeldendeDato: LocalDate = LocalDate.now(),
-): Grunnbeløp {
-    return utenFramtidigeGrunnbeløp(gjeldendeDato)
+): Grunnbeløp =
+    utenFramtidigeGrunnbeløp(gjeldendeDato)
         .first { it.gjelderFor(LocalDate.of(dato.year, dato.month, 10)) }
         .grunnbeløp
-}
 
-private fun Set<GrunnbeløpPolicy>.utenFramtidigeGrunnbeløp(gjeldendeDato: LocalDate): List<GrunnbeløpPolicy> {
-    return this.filter { it.iverksattFom.isBefore(gjeldendeDato).or(it.iverksattFom.isEqual(gjeldendeDato)) }
-}
+private fun Set<GrunnbeløpPolicy>.utenFramtidigeGrunnbeløp(gjeldendeDato: LocalDate): List<GrunnbeløpPolicy> =
+    this.filter {
+        it.iverksattFom.isBefore(gjeldendeDato).or(it.iverksattFom.isEqual(gjeldendeDato))
+    }
 
-private fun GrunnbeløpPolicy.gjelderFor(dato: LocalDate): Boolean {
-    return !(dato.isBefore(this.fom))
-}
+private fun GrunnbeløpPolicy.gjelderFor(dato: LocalDate): Boolean = !(dato.isBefore(this.fom))
 
-private fun GrunnbeløpPolicy.gjelderFor(regel: Regel): Boolean {
-    return this.regel == regel
-}
+private fun GrunnbeløpPolicy.gjelderFor(regel: Regel): Boolean = this.regel == regel
 
 data class GrunnbeløpPolicy(
     val fom: LocalDate,

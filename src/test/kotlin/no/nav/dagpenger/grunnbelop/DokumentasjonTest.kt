@@ -43,16 +43,18 @@ class DokumentasjonTest {
             }
 
             // Test grunnlag
-            getGrunnbeløpForRegel(Grunnlag).forDato(
-                dato = grunnlagFom,
-                gjeldendeDato = dagensDato,
-            ).verdi shouldBe grunnbeløpUnderTest.verdi
+            getGrunnbeløpForRegel(Grunnlag)
+                .forDato(
+                    dato = grunnlagFom,
+                    gjeldendeDato = dagensDato,
+                ).verdi shouldBe grunnbeløpUnderTest.verdi
 
             // Test minsteinntekt
-            getGrunnbeløpForRegel(Minsteinntekt).forDato(
-                dato = minsteinntektFom,
-                gjeldendeDato = dagensDato,
-            ).verdi shouldBe grunnbeløpUnderTest.verdi
+            getGrunnbeløpForRegel(Minsteinntekt)
+                .forDato(
+                    dato = minsteinntektFom,
+                    gjeldendeDato = dagensDato,
+                ).verdi shouldBe grunnbeløpUnderTest.verdi
         }
 
         lagDokumentasjon(testedeGrunnbeløp.toList())

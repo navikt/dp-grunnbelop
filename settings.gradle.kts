@@ -8,4 +8,3 @@
  */
 
 rootProject.name = "dp-grunnbelop"
-include("lib")
