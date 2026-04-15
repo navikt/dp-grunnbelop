@@ -16,7 +16,6 @@ repositories {
 val cucumberVersion = "7.34.3"
 
 dependencies {
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation(kotlin("stdlib-jdk8"))
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.12.2")
