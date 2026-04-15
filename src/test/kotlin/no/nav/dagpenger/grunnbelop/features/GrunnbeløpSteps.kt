@@ -22,7 +22,7 @@ class GrunnbeløpSteps : No {
     private var verdi: BigDecimal? = null
 
     private companion object {
-        private val dateFormatter = DateTimeFormatter.ofPattern("d. MMMM yyyy").localizedBy(Locale("no", "NO"))
+        private val dateFormatter = DateTimeFormatter.ofPattern("d. MMMM yyyy").localizedBy(Locale.of("no", "NO"))
     }
 
     init {

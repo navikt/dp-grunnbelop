@@ -97,7 +97,7 @@ class DokumentasjonTest {
         val hg: String = minsteinntektFom.format(norwegianDateFormat)
 
         private companion object {
-            private val locale = Locale("no", "NO")
+            private val locale = Locale.of("no", "NO")
             private val norwegianDateFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).withLocale(locale)
             private val norwegianNumberFormat = NumberFormat.getCurrencyInstance(locale)
 
