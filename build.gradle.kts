@@ -10,7 +10,6 @@ plugins {
 
 repositories {
     mavenCentral()
-    maven("https://jitpack.io")
 }
 
 val cucumberVersion = "7.34.3"
