@@ -19,8 +19,8 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.12.2")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.12.2")
-    testImplementation("io.kotest:kotest-assertions-core-jvm:5.9.1")
-    testImplementation("io.kotest:kotest-runner-junit5-jvm:5.9.1")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:6.1.11")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:6.1.11")
     testImplementation("com.approvaltests:approvaltests:26.7.1")
     testImplementation("org.junit.platform:junit-platform-suite:1.12.2")
     testImplementation("io.cucumber:cucumber-java:$cucumberVersion")
