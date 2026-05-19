@@ -10,7 +10,7 @@ enum class Grunnbeløp(
     val verdi: BigDecimal,
     val iverksattFom: LocalDate,
 ) {
-    GjusteringsTest(verdi = 136000.toBigDecimal(), iverksattFom = LocalDate.now().plusYears(10)),
+    GjusteringsTest(verdi = 136549.toBigDecimal(), iverksattFom = LocalDate.now().plusYears(10)),
     FastsattI2025(verdi = 130160.toBigDecimal(), iverksattFom = LocalDate.of(2025, Month.MAY, 31)),
     FastsattI2024(verdi = 124028.toBigDecimal(), iverksattFom = LocalDate.of(2024, Month.JUNE, 1)),
     FastsattI2023(verdi = 118620.toBigDecimal(), iverksattFom = LocalDate.of(2023, Month.MAY, 27)),
