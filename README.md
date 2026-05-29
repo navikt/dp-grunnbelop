@@ -1,5 +1,3 @@
-[![](https://jitpack.io/v/navikt/dp-grunnbelop.svg)](https://jitpack.io/#navikt/dp-grunnbelop)
-
 # dp-grunnbelop
 
 Bibliotek som holder nåværende og
