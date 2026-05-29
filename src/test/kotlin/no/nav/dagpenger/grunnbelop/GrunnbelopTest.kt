@@ -124,7 +124,7 @@ class GrunnbelopTest {
 
     @Test
     fun `Alle grunnbeløp har en mapping`() {
-        val iverksatteGrunnbeløp = Grunnbeløp.values().filter { it.iverksattFom.isBefore(LocalDate.now()) }
+        val iverksatteGrunnbeløp = Grunnbeløp.entries.filter { it.iverksattFom.isBefore(LocalDate.now()) }
 
         iverksatteGrunnbeløp.forAll { grunnbeløp ->
             gyldighetsperioder shouldContainKey grunnbeløp
