@@ -9,6 +9,8 @@ Egenskap: Grunnbeløp
 
     Eksempler:
       | år   | beløp  | iverksettelsesdato | hengende g    |
+      | 2026 | 136549 | 30. mai            | 1. juni       |
+      | 2025 | 130160 | 31. mai            | 2. juni       |
       | 2024 | 124028 | 1. juni            | 3. juni       |
       | 2023 | 118620 | 27. mai            | 29. mai       |
       | 2022 | 111477 | 21. mai            | 23. mai       |
