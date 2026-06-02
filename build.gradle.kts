@@ -25,7 +25,7 @@ dependencies {
     testImplementation("io.kotest:kotest-runner-junit5-jvm:6.1.11")
     testImplementation("io.kotest:kotest-assertions-table:6.1.11")
     testImplementation("com.approvaltests:approvaltests:30.1.1")
-    testImplementation("org.junit.platform:junit-platform-suite:1.12.2")
+    testImplementation("org.junit.platform:junit-platform-suite:6.1.0")
     testImplementation("io.cucumber:cucumber-java:$cucumberVersion")
     testImplementation("io.cucumber:cucumber-java8:$cucumberVersion")
     testImplementation("io.cucumber:cucumber-junit-platform-engine:$cucumberVersion")
