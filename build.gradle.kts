@@ -12,25 +12,23 @@ repositories {
     mavenCentral()
 }
 
-val cucumberVersion = "7.34.3"
+val cucumberVersion = "7.34.8"
+val junitVersion = "6.1.3"
+val kotestVersion = "6.2.5"
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
+    testImplementation(platform("org.junit:junit-bom:$junitVersion"))
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:6.1.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:6.1.0")
-    testImplementation("io.kotest:kotest-assertions-core-jvm:5.9.1")
-    testImplementation("io.kotest:kotest-runner-junit5-jvm:5.9.1")
-    testImplementation("io.kotest:kotest-assertions-core-jvm:6.1.11")
-    testImplementation("io.kotest:kotest-runner-junit5-jvm:6.1.11")
-    testImplementation("io.kotest:kotest-assertions-table:6.1.11")
-    testImplementation("com.approvaltests:approvaltests:30.1.1")
-    testImplementation("org.junit.platform:junit-platform-suite:1.12.2")
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
+    testImplementation("io.kotest:kotest-assertions-table:$kotestVersion")
+
+    testImplementation("com.approvaltests:approvaltests:31.0.0")
+
     testImplementation("io.cucumber:cucumber-java:$cucumberVersion")
     testImplementation("io.cucumber:cucumber-java8:$cucumberVersion")
     testImplementation("io.cucumber:cucumber-junit-platform-engine:$cucumberVersion")
-
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:6.1.0")
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
