@@ -1,13 +1,18 @@
 name: Build and deploy
 
-on: [ push ]
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore:
+      - 'dependabot/**'
+      - 'renovate/**'
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: gradle/actions/setup-gradle@v6
       - run: ./gradlew build
 
@@ -19,7 +24,7 @@ jobs:
       contents: write
     if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'ci skip')
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Set release tag
         run: |
           export TAG_NAME="$(TZ="Europe/Oslo" date +%Y%m%d).$(echo $GITHUB_RUN_NUMBER).$(echo $GITHUB_SHA | cut -c 1-6)"
@@ -52,7 +57,7 @@ jobs:
     permissions:
       packages: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: gradle/actions/setup-gradle@v6
       - name: publish
         run: ./gradlew -Pversion="$(echo ${{ needs.release.outputs.tag }})" :publish
