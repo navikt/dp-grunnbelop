@@ -31,17 +31,14 @@ dependencies {
     testImplementation("io.cucumber:cucumber-junit-platform-engine:$cucumberVersion")
 }
 
-val sourcesJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("sources")
-    from(sourceSets["main"].allSource)
-}
+val sourcesJar =
+    tasks.register<Jar>("sourcesJar") {
+        archiveClassifier.set("sources")
+        from(sourceSets["main"].allSource)
+    }
 
-artifacts {
-    add("archives", sourcesJar)
-}
-
-val githubUser: String? by project
-val githubPassword: String? by project
+val githubUser: String? = project.findProperty("githubUser") as String?
+val githubPassword: String? = project.findProperty("githubPassword") as String?
 
 publishing {
     repositories {

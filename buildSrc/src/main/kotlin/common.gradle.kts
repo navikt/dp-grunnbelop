@@ -1,4 +1,3 @@
-import gradle.kotlin.dsl.accessors._4ae9a357be730be19e1f9aadcbf2b289.test
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
