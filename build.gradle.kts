@@ -14,7 +14,7 @@ repositories {
 
 val cucumberVersion = "7.34.9"
 val junitVersion = "6.1.3"
-val kotestVersion = "6.2.5"
+val kotestVersion = "6.2.6"
 
 dependencies {
     testImplementation(platform("org.junit:junit-bom:$junitVersion"))
