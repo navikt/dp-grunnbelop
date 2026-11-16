@@ -12,7 +12,7 @@ repositories {
     mavenCentral()
 }
 
-val cucumberVersion = "8.0.4"
+val cucumberVersion = "8.1.0"
 val junitVersion = "6.1.3"
 val kotestVersion = "6.2.7"
 
