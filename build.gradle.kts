@@ -24,7 +24,7 @@ dependencies {
     testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
     testImplementation("io.kotest:kotest-assertions-table:$kotestVersion")
 
-    testImplementation("com.approvaltests:approvaltests:31.0.0")
+    testImplementation("com.approvaltests:approvaltests:31.1.0")
 
     testImplementation("io.cucumber:cucumber-java:$cucumberVersion")
     testImplementation("io.cucumber:cucumber-java8:$cucumberVersion")
